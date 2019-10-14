@@ -1,0 +1,37 @@
+https://leetcode.com/problems/baseball-game/
+
+
+class Solution {
+    public int calPoints(String[] ops) {
+        int[] stk = new int[ops.length];
+        int top = -1;
+        for(String op : ops){
+            if(op.equals("+")){
+                int value1 = stk[top];
+                int value2 = stk[top-1];
+                int sum = value1 + value2;
+                stk[++top] = sum;
+            }
+            else if(op.equals("D")){
+                int value = stk[top];
+                int twice = value * 2;
+                stk[++top] = twice;
+            }
+            else if(op.equals("C")){
+                stk[top] = 0;
+                top--;
+            }
+            else{
+                int newValue = Integer.parseInt(op);
+                stk[++top] = newValue;
+            }    
+    }
+    
+    int result = 0;
+        for(int i=0;i<=top;i++){
+            result = result + stk[i];
+        }
+    
+    return result;
+    }
+}
