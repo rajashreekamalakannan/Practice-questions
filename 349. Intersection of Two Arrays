@@ -1,0 +1,24 @@
+https://leetcode.com/problems/intersection-of-two-arrays/
+
+
+class Solution {
+    public int[] intersection(int[] nums1, int[] nums2) {
+        //int res[]=new int[nums1.length+nums2.length];
+        HashSet<Integer> res=new HashSet<>();
+        int i=0,j=0,k=0;
+        while(i<nums1.length){
+            for(j=0;j<nums2.length;j++){
+                if(nums1[i]==nums2[j]){
+                   res.add(nums1[i]);
+                }
+            }
+            i++;
+        }
+        Integer[] ans = res.toArray(new Integer[] {});
+        int[] ans1 = new int[ans.length];
+		for (int x = 0; x < ans.length; x++) {
+			ans1[x] = ans[x].intValue();
+		}
+        return ans1;
+    }
+}
